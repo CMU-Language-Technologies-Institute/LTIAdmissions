@@ -14,12 +14,19 @@
 5. Create links for all resumes in the folder
     1. Create a new spreadsheet in Google Drive (not in the same folder as resumes)
     2. Click on Extensions -> Apps Script
-    3. 
+    3. Copy and paste the code snippet below, filling in the DRIVE_ID
 ```
-        function myFunction() {
+function myFunction() {
   var ss=SpreadsheetApp.getActiveSpreadsheet();
   var s=ss.getActiveSheet();
   var c=s.getActiveCell();
+
+  // get Header row range
+  var headerRow = s.getRange(1, 1, 1, 2);
+
+  // add Header values
+  headerRow.setValues([['appid', 'resume URL']]);
+  
   var fldr=DriveApp.getFolderById("1PBmZx71vlXFBlCgUs9iT7Z7k-xiA5cjV");
   var files=fldr.getFiles();
   var ids=[],names=[],f,str;
@@ -30,7 +37,9 @@
     url_string = f.getUrl();
     names.push([url_string]);
   }
-  s.getRange(1,1,names.length).setValues(ids);
-  s.getRange(1,2,names.length).setValues(names);
+  s.getRange(2,1,names.length).setValues(ids);
+  s.getRange(2,2,names.length).setValues(names);
 }
 ```
+    4. Navigate back to the spreadsheet.  The applicant IDs and resume URLs will now be populated.  Name the spreadsheet and download it as a csv.
+    

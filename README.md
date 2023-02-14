@@ -41,5 +41,5 @@ function myFunction() {
   s.getRange(2,2,names.length).setValues(names);
 }
 ```
-    4. Navigate back to the spreadsheet.  The applicant IDs and resume URLs will now be populated.  Name the spreadsheet and download it as a csv.
+6. Navigate back to the spreadsheet.  The applicant IDs and resume URLs will now be populated.  Name the spreadsheet and download it as a csv.
     

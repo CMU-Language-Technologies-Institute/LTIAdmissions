@@ -14,7 +14,8 @@
 5. Create links for all resumes in the folder
     1. Create a new spreadsheet in Google Drive (not in the same folder as resumes)
     2. Click on Extensions -> Apps Script
-    3. ```
+    3. 
+```
         function myFunction() {
   var ss=SpreadsheetApp.getActiveSpreadsheet();
   var s=ss.getActiveSheet();

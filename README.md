@@ -10,6 +10,26 @@
 2. Unzip files and combine all directories (there will be duplicates, which can be skipped)
 3. Upload all resumes to a Google drive folder
 4. Find the Google drive directory id by navigating to the resume directory: https://drive.google.com/drive/folders/[DRIVE_ID]
-    i. For example: The drive ID for the url: https://drive.google.com/drive/folders/14hqpGTIpPyW4C1nxsYTezeTrSaWP2d_m is: 14hqpGTIpPyW4C1nxsYTezeTrSaWP2d_m
+    1. For example: The drive ID for the url: https://drive.google.com/drive/folders/14hqpGTIpPyW4C1nxsYTezeTrSaWP2d_m is: 14hqpGTIpPyW4C1nxsYTezeTrSaWP2d_m
 5. Create links for all resumes in the folder
-    i.
+    1. Create a new spreadsheet in Google Drive (not in the same folder as resumes)
+    2. Click on Extensions -> Apps Script
+    3. ```
+        function myFunction() {
+  var ss=SpreadsheetApp.getActiveSpreadsheet();
+  var s=ss.getActiveSheet();
+  var c=s.getActiveCell();
+  var fldr=DriveApp.getFolderById("1PBmZx71vlXFBlCgUs9iT7Z7k-xiA5cjV");
+  var files=fldr.getFiles();
+  var ids=[],names=[],f,str;
+  while (files.hasNext()) {
+    f=files.next();
+    app_id = f.getName().split('_')[1];
+    ids.push([app_id]);
+    url_string = f.getUrl();
+    names.push([url_string]);
+  }
+  s.getRange(1,1,names.length).setValues(ids);
+  s.getRange(1,2,names.length).setValues(names);
+}
+```

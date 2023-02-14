@@ -88,3 +88,9 @@ function myFunction() {
 7. Collate transcripts for students with more than one
 ```
 python collate_transcripts.py [input_transcript_csv] [output_transcript_csv] 
+
+## Creating Master LTI spreadsheet with all applicants 
+This part of the process creates a master spreadsheet with all of the LTI applicants for MCDS, MIIS, MSAII.  The spreadsheet provides an initial ranking based on whether applicants passed the language requirements, whether they applied to an LTI program as their first choice, and the GRE quantitative score and the GPA.
+1. Download applicant csvs for MCDS, MIIS, and MSAII from applygrad
+2. Format the applygrad data to a csv 
+

@@ -88,9 +88,32 @@ function myFunction() {
 7. Collate transcripts for students with more than one
 ```
 python collate_transcripts.py [input_transcript_csv] [output_transcript_csv] 
+```
 
 ## Creating Master LTI spreadsheet with all applicants 
-This part of the process creates a master spreadsheet with all of the LTI applicants for MCDS, MIIS, MSAII.  The spreadsheet provides an initial ranking based on whether applicants passed the language requirements, whether they applied to an LTI program as their first choice, and the GRE quantitative score and the GPA.
-1. Download applicant csvs for MCDS, MIIS, and MSAII from applygrad
-2. Format the applygrad data to a csv 
+This part of the process creates a master spreadsheet with all of the LTI applicants for MCDS, MIIS, MSAII.  The spreadsheet provides an initial ranking based on whether applicants passed the language requirements, whether they applied to an LTI program as their first choice, and the sum of the GRE quantitative score and the GPA.
+1. Download applicant csvs for MCDS, MIIS, and MSAII from applygrad.
+2. Format the applygrad data to a csv  
+```
+python format_applygrad_csv.py [input_applygrad_file]
+```
+3. Combine all applicants and add links to resumes and transcripts.  This outputs an excel (xlsx) file.
+```
+python create_lti_master_csv.py -mcds MCDS.csv -msaii MSAII.csv -miis MIIS.csv -r ResumeLinks.csv -t Collated_transcripts.csv -o [output_file].xlsx
+```
+
+## Creating a Program Specific spreadsheet adding annotations and links to resumes and transcripts
+This part of the process creates a program specific (MCDS, MIIS, or MSAII) spreadsheet.  The spreadsheet provides an initial ranking based on whether applicants passed the language requirements, whether they applied to the program as their first choice, and the sum of the GRE quantitative score and the GPA.
+1. Download program specific CSV from applygrad (you may already have this from creating a master spreadsheet)
+2. Format the applygrad data to a csv (Skip this step if you have formatted data from creating the master spreadsheet)
+```
+python format_applygrad_csv.py [input_applygrad_file]
+```
+3. Gather files with resume URLs, transcript URLs, resume annotations, and transcript annotations
+4. Create program spreadsheet 
+```
+python create_program_csv.py -i [PROGRAM].csv -n [PROGRAM_NAME - MCDS|MIIS|MSAII] -r [RESUME_URLS].csv -t [TRANSCRIPT_URLS].csv -o [OUTPUT_FILE].xlsx -ra [RESUME_ANNOTATIONS].csv -ta [TRANSCRIPT_ANNOTATIONS].csv
+```
+
+
 

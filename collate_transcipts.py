@@ -1,7 +1,10 @@
 import sys
 from collections import defaultdict
 
+#Create a csv that combines all transcripts for an applicant into one row
+
 transcript_csv = sys.argv[1]
+output_csv = sys.argv[2]
 
 transcript_dict = defaultdict(list)
 max_len = 4
@@ -12,8 +15,7 @@ with open(transcript_csv, 'r') as f:
         url = line_parts[1].strip()
         transcript_dict[appid].append(url)
 
-#print(len(transcript_dict))
-output_file = open('Collated_transcripts.csv', 'w')
+output_file = open(output_csv, 'w')
 output_file.write('appid,transcript URL 1,transcript URL 2,transcript URL 3,transcript URL 4\n')
 num_ids = 0
 for appid in transcript_dict:
@@ -26,7 +28,5 @@ for appid in transcript_dict:
         final_list.append(url)
     output_file.write(appid + ',' + ','.join(final_list) + '\n')
     
-#print(num_ids)
 output_file.flush()
 output_file.close()
-print('In correct script!!!')

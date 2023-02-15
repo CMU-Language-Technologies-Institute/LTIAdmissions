@@ -392,6 +392,12 @@ class annotate_applicants_api:
         merged_df.insert(loc=39, column='Transcript Notes', value=trans_col7)
         
         self.df = merged_df
+    
+    def sort_master(self):
+        self.df = self.df.sort_values(by=['Abv TOT Threshold','Is LTI Program','GPA+GREQ'], ascending=[False,False,False])
+        
+    def sort_program(self):
+        self.df = self.df.sort_values(by=['Abv TOT Threshold','Prog Rank','GPA+GREQ'], ascending=[False,True,False])
         
     def write_excel(self, output_file):
         writer = pd.ExcelWriter(output_file, engine='xlsxwriter')

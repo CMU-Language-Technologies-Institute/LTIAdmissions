@@ -39,4 +39,5 @@ if args.resume_annotations != None:
     annotate_applicants.add_resume_annotations(args.resume_annotations)
 if args.transcript_annotations != None:
     annotate_applicants.add_transcript_annotations(args.transcript_annotations)
+annotate_applicants.sort_program()
 annotate_applicants.write_excel(args.output)

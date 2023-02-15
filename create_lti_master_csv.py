@@ -41,4 +41,5 @@ if args.resumes != None:
     annotate_applicants.add_resume_column(args.resumes)
 if args.transcripts != None:
     annotate_applicants.add_transcript_columns(args.transcripts)
+annotate_applicants.sort_master()
 annotate_applicants.write_excel(args.output)

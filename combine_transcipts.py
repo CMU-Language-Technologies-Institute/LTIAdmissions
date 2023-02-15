@@ -4,6 +4,8 @@ import shutil
 from collections import defaultdict
 from PyPDF2 import PdfMerger
 
+#Combines transcript PDFs if possible
+
 input_dir = sys.argv[1]
 output_dir = sys.argv[2]
 try:
@@ -43,4 +45,3 @@ for appid in transcript_dict:
             num += 1
             merged_dict[appid].append(file_name)
             
-print(merged_dict)
